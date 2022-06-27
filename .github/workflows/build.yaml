@@ -41,5 +41,5 @@ jobs:
       
       - name: URL
         # run:  curl $(minikube service dockimage --url/example.html)  
-        run: curl $(minikube service helm1 --url)  
+        run: curl $(minikube service helm1 --url)/example.html  
         # run: curl $(minikube service bench1 --url)/example.html
