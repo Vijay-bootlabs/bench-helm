@@ -1,0 +1,5 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/hemanthkumar/bench-helm'
+docker build -t vijay250/bench-task:v1  .
+make: Leaving directory '/home/hemanthkumar/bench-helm'
+ 

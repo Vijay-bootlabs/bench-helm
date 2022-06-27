@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run a one-line script
+        run: make build
+
+      - name: Run a one-line script
+        run: make push
+
+      - name: helm version
+        run: helm version
+      
+      - name: minikube start
+        run: minikube start
+      
+      - name: helm install
+
+        run: helm install helm1 helm-chart/ --values helm-chart/values.yaml
+      
+      
+      - name: Sleep seconds
+        uses: jakejarvis/wait-action@master
+        with:
+         time: 150s
+         
+      - name: get services
+        run: kubectl get services
+      
+      - name: URL
+        # run:  curl $(minikube service dockimage --url/example.html)  
+        run: curl $(minikube service helm1 --url)  
+        # run: curl $(minikube service bench1 --url)/example.html
